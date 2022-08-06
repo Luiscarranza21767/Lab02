@@ -2517,28 +2517,6 @@ PSECT CODE, delta=2, abs
 PSECT CODE, delta=2, abs
  ORG 0x0100
 
-Table:
-    CLRF PCLATH
-    BSF PCLATH, 0
-    ANDLW 0x0F
-    ADDWF PCL
-    RETLW 00111111B ; Regresa 0
-    RETLW 00000110B ; Regresa 1
-    RETLW 01011011B ; Regresa 2
-    RETLW 01001111B ; Regresa 3
-    RETLW 01100110B ; Regresa 4
-    RETLW 01101101B ; Regresa 5
-    RETLW 01111101B ; Regresa 6
-    RETLW 00000111B ; Regresa 7
-    RETLW 01111111B ; Regresa 8
-    RETLW 01101111B ; Regresa 9
-    RETLW 01110111B ; Regresa A
-    RETLW 01111111B ; Regresa B
-    RETLW 00111001B ; Regresa C
-    RETLW 00111111B ; Regresa D
-    RETLW 01111001B ; Regresa E
-    RETLW 01110001B ; Regresa F
-
 MAIN:
 BANKSEL OSCCON
     ; SE CONFIGURA EL OSCILADOR A 2MHz
@@ -2578,6 +2556,7 @@ BANKSEL PORTB
     MOVWF TMR0 ; SE CARGA EL VALOR DE N=195 PARA OBTENER 100ms
     CLRF CONTHEX
     CLRF COMP
+    BSF COMP, 0
 
 ;*******************************************************************************
 ; Inicio del LOOP
@@ -2594,6 +2573,9 @@ LOOP:
     BTFSS PORTA, 1
     CALL Decremento
 
+;*******************************************************************************
+; Timer0
+;*******************************************************************************
 REVT0IF:
     BTFSS INTCON, 2 ; Revisa si TOIF está en 1 por overflow
     GOTO $-1 ; Si está en 0 vuelve a revisar
@@ -2609,7 +2591,46 @@ REVT0IF:
     INCF PORTD ; Incrementa PORTD
     MOVLW 61 ; Reinicia el TMR0
     MOVWF TMR0
+    BCF STATUS, 2 ; Limpia el bit 2 de STATUS
+    MOVF COMP, W
+    ANDLW 0x0F
+    MOVWF COMP
+    MOVF PORTD, W
+    ANDLW 0x0F
+    SUBWF COMP, W
+    BTFSS STATUS, 2 ; Verifica si el resultado es 0
     GOTO LOOP
+    CLRF PORTD
+    GOTO LOOP
+
+;*******************************************************************************
+; Tabla para Display
+;*******************************************************************************
+Table:
+    CLRF PCLATH
+    BSF PCLATH, 0
+    ANDLW 0x0F
+    ADDWF PCL
+    RETLW 00111111B ; Regresa 0
+    RETLW 00000110B ; Regresa 1
+    RETLW 01011011B ; Regresa 2
+    RETLW 01001111B ; Regresa 3
+    RETLW 01100110B ; Regresa 4
+    RETLW 01101101B ; Regresa 5
+    RETLW 01111101B ; Regresa 6
+    RETLW 00000111B ; Regresa 7
+    RETLW 01111111B ; Regresa 8
+    RETLW 01101111B ; Regresa 9
+    RETLW 01110111B ; Regresa A
+    RETLW 01111111B ; Regresa B
+    RETLW 00111001B ; Regresa C
+    RETLW 00111111B ; Regresa D
+    RETLW 01111001B ; Regresa E
+    RETLW 01110001B ; Regresa F
+
+;*******************************************************************************
+; Subrutinas contador Display
+;*******************************************************************************
 
 Antirrebote1:
     BSF bandera1, 0 ; Si se presionó enciende el primer bit de bander1
@@ -2618,12 +2639,12 @@ Antirrebote1:
 Incremento:
     BTFSS bandera1, 0 ;Si no está presionado ejecuta la siguiente instrucción
     RETURN
-    INCF COMP
     INCF CONTHEX, F ; Si está en 1 incrementa 1 la variable
     MOVF CONTHEX, W ; Mueve el valor de la variable a W
     CALL Table
     MOVWF PORTB
     CLRF bandera1
+    INCF COMP
     RETURN
 
 Antirrebote2:
@@ -2633,13 +2654,14 @@ Antirrebote2:
 Decremento:
     BTFSS bandera1, 1 ; Si no está presionado ejecuta la siguiente instrucción
     RETURN
-    DECF COMP
     DECF CONTHEX, F ; Si está en 1 decrementa la variable
     MOVF CONTHEX, W
     CALL Table
     MOVWF PORTB
     CLRF bandera1
+    DECF COMP
     RETURN
+
 
 ;*******************************************************************************
 ; FIN DEL CÓDIGO
