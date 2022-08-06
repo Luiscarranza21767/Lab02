@@ -47,14 +47,14 @@ PROCESSOR 16F887
 ; Variables
 ; ******************************************************************************
 PSECT udata_shr
- bandera1:
+ bandera1:	    ; Variable para antirrebote
     DS 1
- CONT1S:
+ CONT1S:	    ; Variable que sirve para contar cada segundo    
     DS 1
- COMP:
+ COMP:		    ; Variable que sirve para comparar display y PORTD
     DS 1
 PSECT udata_bank0
- CONTHEX:
+ CONTHEX:	    ; Variable para controlar el valor que usa el display
     DS 1
 ; ******************************************************************************
 ; Vector Reset
@@ -107,7 +107,7 @@ BANKSEL PORTB
     MOVWF TMR0	; SE CARGA EL VALOR DE N=195 PARA OBTENER 100ms
     CLRF CONTHEX
     CLRF COMP
-    BSF COMP, 0
+    BSF COMP, 0	; INICIA LA VARIABLE DEL COMPARADOR EN 1
     
 ;*******************************************************************************
 ; Inicio del LOOP
@@ -118,11 +118,11 @@ LOOP:
     BTFSC PORTA, 0	; Revisa si se presionó RA1
     CALL Antirrebote1
     BTFSS PORTA, 0	
-    CALL Incremento
+    CALL Incremento	; Subrutina del incremento en el display
     BTFSC PORTA, 1	; Revisa si se presionó RA1
     CALL Antirrebote2
     BTFSS PORTA, 1
-    CALL Decremento
+    CALL Decremento	; Subrutina del decremento en el display
     
 ;*******************************************************************************
 ; Timer0
@@ -142,21 +142,27 @@ REVT0IF:
     INCF PORTD	    ; Incrementa PORTD
     MOVLW 61	    ; Reinicia el TMR0
     MOVWF TMR0
+    
+;*******************************************************************************
+; Comparación de contador de segundos y display
+;*******************************************************************************      
+    
     BCF STATUS, 2   ; Limpia el bit 2 de STATUS
-    MOVF COMP, W
-    ANDLW 0x0F
-    MOVWF COMP
-    MOVF PORTD, W
-    ANDLW 0x0F
-    SUBWF COMP, W
+    MOVF COMP, W    ; Mueve el valor de COMP a W
+    ANDLW 0x0F	    ; Hace un AND para asegurarse que está de 0-15
+    MOVWF COMP	    ; Mueve el valor de regreso a COMP
+    MOVF PORTD, W   ; Mueve el valor del segundero a W
+    ANDLW 0x0F	    ; Hace un AND para asegurarse que está de 0-15
+    SUBWF COMP, W   ; Le resta el valor de W a COMP
     BTFSS STATUS, 2 ; Verifica si el resultado es 0
     GOTO LOOP
-    CLRF PORTD
+    CLRF PORTD	    ; Si es 0 es porque son iguales y limpia PORTD
     GOTO LOOP
 
 ;*******************************************************************************
 ; Tabla para Display
 ;*******************************************************************************
+    
 Table:
     CLRF PCLATH
     BSF PCLATH, 0
@@ -192,10 +198,10 @@ Incremento:
     RETURN
     INCF CONTHEX, F	; Si está en 1 incrementa 1 la variable
     MOVF CONTHEX, W	; Mueve el valor de la variable a W
-    CALL Table
-    MOVWF PORTB
+    CALL Table		; Llama a la tabla 
+    MOVWF PORTB		; Regresa el valor de la tabla a PORTB
     CLRF bandera1
-    INCF COMP
+    INCF COMP		; Incrementa la variable que se utiliza para comparar
     RETURN
 
 Antirrebote2:
@@ -207,12 +213,11 @@ Decremento:
     RETURN
     DECF CONTHEX, F	; Si está en 1 decrementa la variable
     MOVF CONTHEX, W
-    CALL Table
-    MOVWF PORTB
-    CLRF bandera1
-    DECF COMP
+    CALL Table		; Llama a la tabla 
+    MOVWF PORTB		; Regresa el valor de la tabla a PORTB
+    CLRF bandera1   
+    DECF COMP		; Decrementa la variable que se utiliza para comparar
     RETURN
-
 
 ;*******************************************************************************
 ; FIN DEL CÓDIGO
