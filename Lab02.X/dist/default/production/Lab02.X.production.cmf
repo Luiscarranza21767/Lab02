@@ -12,9 +12,9 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $build/default/production/main.o
-CODE - 0 0 0 170 2 1
+CODE - 0 0 0 181 2 1
 udata_bank0 BANK0 1 20 20 1 1 1
-udata_shr COMMON 1 70 70 3 1 1
+udata_shr COMMON 1 70 70 5 1 1
 config CONFIG 4 2007 2007 2 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -30,14 +30,14 @@ BANK0 21-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST 170-1FFF 2
-ENTRY 170-1FFF 2
+CONST 181-1FFF 2
+ENTRY 181-1FFF 2
 IDLOC 2000-2003 2
-CODE 170-1FFF 2
-COMMON 73-7F 1
+CODE 181-1FFF 2
+COMMON 75-7F 1
 EEDATA 2100-21FF 2
-STRCODE 170-1FFF 2
-STRING 170-1FFF 2
+STRCODE 181-1FFF 2
+STRING 181-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -52,82 +52,82 @@ STRING 170-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $build/default/production/main.o
-0 CODE ABS >63:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-0 CODE ABS >64:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-1 CODE ABS >69:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-100 CODE ABS >72:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-102 CODE ABS >74:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-103 CODE ABS >75:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-104 CODE ABS >76:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-105 CODE ABS >78:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-106 CODE ABS >80:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-108 CODE ABS >81:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-109 CODE ABS >82:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-10A CODE ABS >84:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-10C CODE ABS >85:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-10D CODE ABS >86:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-10E CODE ABS >87:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-10F CODE ABS >88:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-110 CODE ABS >89:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-111 CODE ABS >91:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-113 CODE ABS >92:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-114 CODE ABS >93:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-115 CODE ABS >96:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-116 CODE ABS >97:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-117 CODE ABS >98:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-118 CODE ABS >100:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11A CODE ABS >101:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11B CODE ABS >102:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11C CODE ABS >103:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11D CODE ABS >104:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11E CODE ABS >105:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-11F CODE ABS >106:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-120 CODE ABS >107:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-121 CODE ABS >108:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-122 CODE ABS >109:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-123 CODE ABS >110:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-124 CODE ABS >117:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-125 CODE ABS >118:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-126 CODE ABS >119:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-127 CODE ABS >120:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-128 CODE ABS >121:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-129 CODE ABS >122:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12A CODE ABS >123:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12B CODE ABS >124:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12C CODE ABS >125:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12D CODE ABS >132:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12E CODE ABS >133:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-12F CODE ABS >134:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-130 CODE ABS >135:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-131 CODE ABS >136:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-132 CODE ABS >142:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-133 CODE ABS >143:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-134 CODE ABS >144:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-135 CODE ABS >145:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-136 CODE ABS >146:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-137 CODE ABS >147:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-138 CODE ABS >148:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-139 CODE ABS >149:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13A CODE ABS >150:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13B CODE ABS >156:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13C CODE ABS >157:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13D CODE ABS >158:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13E CODE ABS >159:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-13F CODE ABS >160:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-140 CODE ABS >161:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-141 CODE ABS >162:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-142 CODE ABS >163:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-143 CODE ABS >164:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-144 CODE ABS >165:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-145 CODE ABS >167:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-146 CODE ABS >173:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-147 CODE ABS >174:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-148 CODE ABS >175:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-149 CODE ABS >176:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-14A CODE ABS >177:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-14B CODE ABS >178:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-14C CODE ABS >179:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-14D CODE ABS >180:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+0 CODE ABS >67:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+0 CODE ABS >68:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+1 CODE ABS >73:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+100 CODE ABS >76:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+102 CODE ABS >78:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+103 CODE ABS >79:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+104 CODE ABS >80:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+105 CODE ABS >82:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+106 CODE ABS >84:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+108 CODE ABS >85:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+109 CODE ABS >86:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+10A CODE ABS >88:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+10C CODE ABS >89:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+10D CODE ABS >90:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+10E CODE ABS >91:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+10F CODE ABS >92:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+110 CODE ABS >93:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+111 CODE ABS >94:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+112 CODE ABS >96:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+114 CODE ABS >97:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+115 CODE ABS >98:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+116 CODE ABS >101:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+117 CODE ABS >102:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+118 CODE ABS >103:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+119 CODE ABS >105:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+11B CODE ABS >106:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+11C CODE ABS >107:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+11D CODE ABS >108:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+11E CODE ABS >109:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+11F CODE ABS >110:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+120 CODE ABS >111:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+121 CODE ABS >112:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+122 CODE ABS >113:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+123 CODE ABS >114:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+124 CODE ABS >115:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+125 CODE ABS >116:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+126 CODE ABS >117:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+127 CODE ABS >118:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+128 CODE ABS >125:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+129 CODE ABS >126:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12A CODE ABS >127:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12B CODE ABS >128:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12C CODE ABS >129:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12D CODE ABS >130:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12E CODE ABS >131:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+12F CODE ABS >132:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+130 CODE ABS >133:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+131 CODE ABS >140:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+132 CODE ABS >141:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+133 CODE ABS >142:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+134 CODE ABS >143:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+135 CODE ABS >144:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+136 CODE ABS >150:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+137 CODE ABS >151:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+138 CODE ABS >152:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+139 CODE ABS >153:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13A CODE ABS >154:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13B CODE ABS >155:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13C CODE ABS >156:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13D CODE ABS >157:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13E CODE ABS >158:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+13F CODE ABS >159:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+140 CODE ABS >165:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+141 CODE ABS >166:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+142 CODE ABS >167:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+143 CODE ABS >168:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+144 CODE ABS >169:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+145 CODE ABS >170:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+146 CODE ABS >171:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+147 CODE ABS >172:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+148 CODE ABS >173:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+149 CODE ABS >174:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+14A CODE ABS >175:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+14B CODE ABS >176:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+14C CODE ABS >178:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+14D CODE ABS >179:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 14E CODE ABS >181:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 14F CODE ABS >182:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 150 CODE ABS >183:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
@@ -137,31 +137,48 @@ $build/default/production/main.o
 154 CODE ABS >187:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 155 CODE ABS >188:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 156 CODE ABS >189:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-157 CODE ABS >190:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-158 CODE ABS >191:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-159 CODE ABS >192:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15A CODE ABS >199:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15B CODE ABS >200:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15C CODE ABS >203:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15D CODE ABS >204:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15E CODE ABS >205:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-15F CODE ABS >206:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-160 CODE ABS >207:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-161 CODE ABS >208:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-162 CODE ABS >209:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-163 CODE ABS >210:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-164 CODE ABS >211:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-165 CODE ABS >214:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-166 CODE ABS >215:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-167 CODE ABS >218:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-168 CODE ABS >219:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-169 CODE ABS >220:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16A CODE ABS >221:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16B CODE ABS >222:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16C CODE ABS >223:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16D CODE ABS >224:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16E CODE ABS >225:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
-16F CODE ABS >226:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+157 CODE ABS >195:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+158 CODE ABS >196:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+159 CODE ABS >197:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15A CODE ABS >198:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15B CODE ABS >199:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15C CODE ABS >200:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15D CODE ABS >201:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15E CODE ABS >202:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+15F CODE ABS >203:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+160 CODE ABS >204:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+161 CODE ABS >205:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+162 CODE ABS >206:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+163 CODE ABS >207:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+164 CODE ABS >208:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+165 CODE ABS >209:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+166 CODE ABS >210:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+167 CODE ABS >211:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+168 CODE ABS >212:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+169 CODE ABS >213:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16A CODE ABS >214:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16B CODE ABS >221:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16C CODE ABS >222:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16D CODE ABS >225:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16E CODE ABS >226:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+16F CODE ABS >227:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+170 CODE ABS >228:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+171 CODE ABS >229:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+172 CODE ABS >230:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+173 CODE ABS >231:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+174 CODE ABS >232:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+175 CODE ABS >233:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+176 CODE ABS >236:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+177 CODE ABS >237:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+178 CODE ABS >240:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+179 CODE ABS >241:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17A CODE ABS >242:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17B CODE ABS >243:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17C CODE ABS >244:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17D CODE ABS >245:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17E CODE ABS >246:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+17F CODE ABS >247:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
+180 CODE ABS >248:D:\Backup\Documentos\GitHub\Lab02\Lab02.X\main.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -174,8 +191,8 @@ $build/default/production/main.o
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-__Hspace_0 170 0 ABS 0 - -
-__Hspace_1 73 0 ABS 0 - -
+__Hspace_0 181 0 ABS 0 - -
+__Hspace_1 75 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Hudata_bank0 0 0 ABS 0 udata_bank0 -
@@ -187,14 +204,14 @@ __Hudata 0 0 ABS 0 udata -
 __Hconfig 4012 0 CONFIG 4 config -
 __Ledata 0 0 ABS 0 edata -
 __Ludata 0 0 ABS 0 udata -
-__HCODE 2E0 0 ABS 0 CODE -
+__HCODE 302 0 ABS 0 CODE -
 __Hcode 0 0 ABS 0 code -
 __Hdata 0 0 ABS 0 data -
 __LCODE 0 0 ABS 0 CODE -
 __Lcode 0 0 ABS 0 code -
 __Ldata 0 0 ABS 0 data -
 __S0 0 0 ABS 0 - -
-__S1 73 0 ABS 0 - -
+__S1 75 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __Lconfig 0 0 CONFIG 4 config -
 __Lspace_0 0 0 ABS 0 - -
@@ -232,7 +249,7 @@ __Ludata_shr 0 0 ABS 0 udata_shr -
 # All other numeric quantities are in decimal.
 %SEGMENTS
 udata_bank0 1 20 20 1 1
-udata_shr 1 70 70 3 1
+udata_shr 1 70 70 5 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

@@ -53,6 +53,10 @@ PSECT udata_shr
     DS 1
  COMP:	    ; Variable que sirve para comparar display con contador de 1s
     DS 1    
+ ALARMA:    ; Variable para activar la alarma
+    DS 1
+ ALARMA1:
+    DS 1
 PSECT udata_bank0
  CONTHEX:   ; Variable utilizada para controlar el display
     DS 1
@@ -87,6 +91,7 @@ BANKSEL TRISB
     BSF TRISA, 0
     BSF TRISA, 1
     CLRF TRISD	; REGISTRO TRISD CONFIGURADO COMO SALIDA
+    CLRF TRISE	; REGISTRO TRISE CONFIGURADO COMO SALIDA
 
 BANKSEL OPTION_REG
     BCF OPTION_REG, 5   ; T0CS COMO FOSC/4
@@ -102,10 +107,13 @@ BANKSEL PORTB
     CLRF PORTA	; SE INICIA PUERTO A EN 0
     CLRF PORTC	; SE INICIA PUERTO C EN 0
     CLRF PORTD	; SE INICIA PUERTO D EN 0
+    CLRF TRISE	; SE INICIA PUERTO E EN 0
     CLRF CONT1S	; INICIA LA VARIABLE EN 0
     MOVLW 61
     MOVWF TMR0	; SE CARGA EL VALOR DE N=195 PARA OBTENER 100ms
     CLRF CONTHEX
+    CLRF ALARMA
+    CLRF ALARMA1
     CLRF COMP
     BSF COMP, 0
     
@@ -138,7 +146,8 @@ REVT0IF:
 ;*******************************************************************************
 ; Contador de 1 segundo
 ;******************************************************************************* 
-    
+CONTADORSEGUNDOS: 
+    CLRF STATUS
     INCF CONT1S, F  ; Después de 100ms incrementa CONT1S
     MOVF CONT1S, W  ; Mueve el valor a W
     SUBLW 10	    ; Resta el valor de CONT1S a 10
@@ -152,18 +161,31 @@ REVT0IF:
 ;*******************************************************************************
 ; Comparación del display con contador de 1 segundo
 ;*******************************************************************************     
-    
-    BCF STATUS, 2   ; Limpia el bit 2 de STATUS
+COMPDISP:
+    CLRF STATUS	    ; Limpia el bit 2 de STATUS
     MOVF COMP, W    ; Mueve el valor del comparador a W
     ANDLW 0x0F	    ; Se asegura de que el valor es de 0-15 con un AND
-    MOVWF COMP	    ; Mueve el valor nuevo de W a COMP
+    MOVWF COMP	    ; Mueve el valor nuevo de W a COMPMOVF PORTD, W
+    MOVF COMP, W
+    MOVWF ALARMA1
     MOVF PORTD, W   ; Mueve el valor del puerto D a W
     ANDLW 0x0F	    ; Se asegura de que está entre 0-15
     SUBWF COMP, W   ; Le resta el valor de PORTD a COMP
     BTFSS STATUS, 2 ; Verifica si el resultado es 0
-    GOTO LOOP	    ; Si no es 0 no son iguales y regresa al loop
+    GOTO ALARM	    ; Si no es 0 no son iguales y regresa al loop   
     CLRF PORTD	    ; Si es 0 el contador y el display son iguales, entonces
 		    ; Reinicia el puerto D
+    BSF ALARMA, 0
+    GOTO LOOP
+ALARM:
+    BTFSC ALARMA, 0
+    INCF PORTE, F
+    CLRF STATUS
+    MOVF ALARMA1, W
+    SUBLW 1
+    SUBWF PORTD, W
+    BTFSS STATUS, 2
+    BCF ALARMA, 0
     GOTO LOOP
 
 ;*******************************************************************************
@@ -204,10 +226,10 @@ Incremento:
     RETURN
     INCF CONTHEX, F	; Si está en 1 incrementa 1 la variable
     MOVF CONTHEX, W	; Mueve el valor de la variable a W
-    CALL Table
-    MOVWF PORTB
-    CLRF bandera1
-    INCF COMP
+    CALL Table		; Llama a la tabla
+    MOVWF PORTB		; Registra el valor de la tabla en PORTB
+    CLRF bandera1	
+    INCF COMP		; Incrementa la variable que sirve para comparar
     RETURN
 
 Antirrebote2:
@@ -219,10 +241,10 @@ Decremento:
     RETURN
     DECF CONTHEX, F	; Si está en 1 decrementa la variable
     MOVF CONTHEX, W
-    CALL Table
-    MOVWF PORTB
+    CALL Table		; Llama a la tabla
+    MOVWF PORTB		; Registra el valor de la tabla en PORTB
     CLRF bandera1
-    DECF COMP
+    DECF COMP		; Decrementa la variable que sirve para la comparación
     RETURN
 
 ;*******************************************************************************
