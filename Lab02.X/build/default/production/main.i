@@ -2627,6 +2627,7 @@ COMPDISP:
       ; Reinicia el puerto D
     BSF ALARMA, 0
     GOTO LOOP
+
 ALARM:
     BTFSC ALARMA, 0
     INCF PORTE, F
