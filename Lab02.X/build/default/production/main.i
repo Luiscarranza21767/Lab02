@@ -2459,7 +2459,8 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 7 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.inc" 2 3
-# 14 "main.s" 2
+# 13 "main.s" 2
+
 ; ******************************************************************************
 ; Palabra de configuración
 ; ******************************************************************************
@@ -2496,14 +2497,14 @@ ENDM
 ; Variables
 ; ******************************************************************************
 PSECT udata_shr
- bandera1:
+ bandera1: ; Variable que sirve para el antirrebote
     DS 1
- CONT1S:
+ CONT1S: ; Variable que sirve para el contador de 1 segundo
     DS 1
- COMP:
+ COMP: ; Variable que sirve para comparar display con contador de 1s
     DS 1
 PSECT udata_bank0
- CONTHEX:
+ CONTHEX: ; Variable utilizada para controlar el display
     DS 1
 ; ******************************************************************************
 ; Vector Reset
@@ -2576,12 +2577,18 @@ LOOP:
 ;*******************************************************************************
 ; Timer0
 ;*******************************************************************************
+
 REVT0IF:
     BTFSS INTCON, 2 ; Revisa si TOIF está en 1 por overflow
     GOTO $-1 ; Si está en 0 vuelve a revisar
     BCF INTCON, 2 ; Si está en uno borra la bandera de ((INTCON) and 07Fh), 2
     MOVLW 61 ; Vuelve a cargar 61 como valor de n
     MOVWF TMR0 ; Carga el valor a TMR0
+
+;*******************************************************************************
+; Contador de 1 segundo
+;*******************************************************************************
+
     INCF CONT1S, F ; Después de 100ms incrementa CONT1S
     MOVF CONT1S, W ; Mueve el valor a W
     SUBLW 10 ; Resta el valor de CONT1S a 10
@@ -2591,16 +2598,22 @@ REVT0IF:
     INCF PORTD ; Incrementa PORTD
     MOVLW 61 ; Reinicia el TMR0
     MOVWF TMR0
+
+;*******************************************************************************
+; Comparación del display con contador de 1 segundo
+;*******************************************************************************
+
     BCF STATUS, 2 ; Limpia el bit 2 de STATUS
-    MOVF COMP, W
-    ANDLW 0x0F
-    MOVWF COMP
-    MOVF PORTD, W
-    ANDLW 0x0F
-    SUBWF COMP, W
+    MOVF COMP, W ; Mueve el valor del comparador a W
+    ANDLW 0x0F ; Se asegura de que el valor es de 0-15 con un AND
+    MOVWF COMP ; Mueve el valor nuevo de W a COMP
+    MOVF PORTD, W ; Mueve el valor del puerto D a W
+    ANDLW 0x0F ; Se asegura de que está entre 0-15
+    SUBWF COMP, W ; Le resta el valor de PORTD a COMP
     BTFSS STATUS, 2 ; Verifica si el resultado es 0
-    GOTO LOOP
-    CLRF PORTD
+    GOTO LOOP ; Si no es 0 no son iguales y regresa al loop
+    CLRF PORTD ; Si es 0 el contador y el display son iguales, entonces
+      ; Reinicia el puerto D
     GOTO LOOP
 
 ;*******************************************************************************
@@ -2661,7 +2674,6 @@ Decremento:
     CLRF bandera1
     DECF COMP
     RETURN
-
 
 ;*******************************************************************************
 ; FIN DEL CÓDIGO
