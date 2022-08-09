@@ -6,7 +6,7 @@
 ; Proyecto: Laboratorio 2 Timer0 y botones
 ; Hardware PIC16F887
 ; Creado: 31/07/22
-; Última Modificación: 05/08/22
+; Última Modificación: 08/08/22
 ; ******************************************************************************
 
 PROCESSOR 16F887
@@ -161,7 +161,7 @@ CONTADORSEGUNDOS:
 ;*******************************************************************************
 ; Comparación del display con contador de 1 segundo
 ;*******************************************************************************     
-COMPDISP:
+COMPDISP:   
     CLRF STATUS	    ; Limpia el bit 2 de STATUS
     MOVF COMP, W    ; Mueve el valor del comparador a W
     ANDLW 0x0F	    ; Se asegura de que el valor es de 0-15 con un AND
@@ -179,14 +179,14 @@ COMPDISP:
     GOTO LOOP
     
 ALARM:
-    BTFSC ALARMA, 0
-    INCF PORTE, F
-    CLRF STATUS
-    MOVF ALARMA1, W
-    SUBLW 1
-    SUBWF PORTD, W
-    BTFSS STATUS, 2
-    BCF ALARMA, 0
+    BTFSC ALARMA, 0 ; Revisa si el bit de alarma está en 1
+    INCF PORTE, F   ; Si está en 1 incrementa puerto E
+    CLRF STATUS	    ; Si está en 0 limpia status
+    MOVF ALARMA1, W ; Mueve el valor de alarma1 a W
+    SUBLW 1	    ; Le resta 1 al valor de W
+    SUBWF PORTD, W  ; Le resta el valor nuevo de alarma1 a PORTD
+    BTFSS STATUS, 2 ; Si el restultado es 0 salta
+    BCF ALARMA, 0   ; Si el resutlado es 1 es porque debe parar
     GOTO LOOP
 
 ;*******************************************************************************
